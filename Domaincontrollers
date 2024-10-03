@@ -8,4 +8,6 @@ Get-ADDomainController -filter * | select hostname, domain, forest
 
 dcdiag /test:dns /v
 
-dewdwefwe
+dewdwefwee
+
+efwefwef
