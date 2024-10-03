@@ -1,0 +1,49 @@
+New-ADGroup -Name Inperson_Hoofddorp_Callgroup -GroupScope Universal -path "OU=Voip Groepen,OU=Groepen,OU=Security Groepen,OU=Groepen,OU=TIMING-AD,DC=intern,DC=local" -Description "Business Essential Voip Groep"
+Set-ADGroup "Inperson_Hoofddorp_Callgroup" -Replace @{mail="APP_MI_PowerBI_Finance@timing.nl"}
+Set-ADGroup "Inperson_Hoofddorp_Callgroup" -Add @{msExchHideFromAddressLists=$true}
+Set-ADGroup "Inperson_Hoofddorp_Callgroup" -Replace @{proxyAddresses="smtp:Inperson_Hoofddorp_Callgroup@timing.mail.onmicrosoft.com"}
+Set-ADGroup -Identity Inperson_Hoofddorp_Callgroup -Add @{'msExchHideFromAddressLists'=$true}
+
+
+New-ADGroup -Name APP_MI_PowerBI_Finance -GroupScope Universal -path "OU=Azure Groups,OU=Application Groups,OU=Security Groups,OU=Groups,DC=intern,DC=local" -Description "PowerBI"
+Set-ADGroup "APP_MI_PowerBI_Finance" -Replace @{mail="APP_MI_PowerBI_Finance@timing.nl"}
+Set-ADGroup "APP_MI_PowerBI_Finance" -Add @{msExchHideFromAddressLists=$true}
+Set-ADGroup "APP_MI_PowerBI_Finance" -Replace @{proxyAddresses="smtp:APP_MI_PowerBI_Finance@timing.mail.onmicrosoft.com"}
+Set-ADGroup -Identity APP_MI_PowerBI_Finance -Add @{'msExchHideFromAddressLists'=$true}
+
+
+
+APP_MI_PowerBI_Finance
+
+Set-ADUser –Identity H.tenZende@timing.nl -fax "99013"
+Set-ADUser –Identity A.vanEmdeBoas@timing.nl -fax "99014"
+Set-ADUser –Identity M.Haasjes@timing.nl -fax "99015"
+Set-ADUser –Identity I.Peper@timing.nl -fax "99016"
+Set-ADUser –Identity W.Evers@timing.nl -fax "99017"
+Set-ADUser –Identity K.Nuijten-Oudshoorn@timing.nl -fax "99018"
+Set-ADUser –Identity B.Schatorje@timing.nl -fax "99019"
+Set-ADUser –Identity p.haarhuis@timing.nl -fax "99020"
+Set-ADUser –Identity a.haasjes@timing.nl -fax "99021"
+Set-ADUser –Identity J.Blom@timing.nl -fax "99022"
+Set-ADUser –Identity C.Vos@timing.nl -fax "99023"
+Set-ADUser –Identity M.vanWoerkom@timing.nl -fax "99024"
+Set-ADUser –Identity M.deJonge@timing.nl -fax "99025"
+Set-ADUser –Identity F.Letteboer@timing.nl -fax "99026"
+Set-ADUser –Identity D.Cuperus@timing.nl -fax "99027"
+Set-ADUser –Identity J.Nijhof@timing.nl -fax "99028"
+Set-ADUser –Identity I.Ockhuizen@timing.nl -fax "99029"
+Set-ADUser –Identity H.vandenHeuvel@timing.nl -fax "99030"
+Set-ADUser –Identity A.vandeWerff@timing.nl -fax "99031"
+Set-ADUser –Identity M.Dijkgraaf@timing.nl -fax "99032"
+Set-ADUser –Identity M.Schutten@timing.nl -fax "99033"
+Set-ADUser –Identity m.spijker@timing.nl -fax "99034"
+Set-ADUser –Identity H.tenTeije@timing.nl -fax "99035"
+Set-ADUser –Identity J.Remmerswaal@timing.nl -fax "99036"
+Set-ADUser –Identity P.nijenhuis@timing.nl -fax "99037"
+Set-ADUser –Identity J.Hooijer@timing.nl -fax "99038"
+Set-ADUser –Identity C.Hoving@timing.nl -fax "99039"
+Set-ADUser –Identity D.vanderZweep@timing.nl -fax "99040"
+Set-ADUser –Identity E.Geurtsen@timing.nl -fax "99041"
+Set-ADUser –Identity F.Beker@timing.nl -fax "99042"
+
+

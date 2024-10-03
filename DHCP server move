@@ -1,0 +1,40 @@
+Export-DhcpServer -ComputerName dc101.intern.local -File C:\DHCPdata.xml -Leases -Force  –Verbose
+
+stop dhcp server op oude server
+
+kopie dhcp backup naar nieuwe server
+
+op tm-dc102: 
+Import-DhcpServer -ComputerName tm-dc102.intern.local -File C:\beheer\DHCPdata.xml -BackupPath C:\beheer\DHCP\ -Leases -ScopeOverwrite -Force  –Verbose
+controle of alle scopes erin staan
+
+dhcp server autorisatie verwijderen
+demote DC101 en reboot
+
+dhcp server autorisatie verwijderen
+
+change IP dc101 van 19.101 naar 19.100 en dns aanpassen  naar 19.178 
+ipconfig /flushdns to remove local cache
+ipconfig /registerdns to ensure the new IP is registered by the DNS server
+dcdiag /fix to ensure service records are registered.
+
+reboot dc101 
+
+
+
+netdom query fsmo
+
+Get-ADDomainController -filter * | select hostname, domain, forest
+
+dcdiag /test:dns /v
+
+change ip domaincontroller  op TM-DC102 van 192.168.19.102  naar 19.101
+
+ipconfig /flushdns to remove local cache
+ipconfig /registerdns to ensure the new IP is registered by the DNS server
+dcdiag /fix to ensure service records are registered.
+
+reboot server 
+
+Sonicwall opbjecten aanpassen
+DC101 en TM-DC102

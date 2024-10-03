@@ -1,0 +1,9 @@
+#rollen servers
+
+netdom query fsmo
+
+#alle domaincontrollers in domein
+
+Get-ADDomainController -filter * | select hostname, domain, forest
+
+dcdiag /test:dns /v
