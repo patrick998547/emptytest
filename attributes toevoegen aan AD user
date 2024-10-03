@@ -1,0 +1,38 @@
+#extensions tovoegen
+Set-AdUser -Identity A.Schader -Add @{extensionName = "USR"} 
+
+$ThisUser = Get-ADUser -Identity $User -Properties extensionAttribute1
+Set-ADUser –Identity p.mengerink -add @{"extensionattribute5"="hallo"}
+
+Set-ADUser –Identity a.greven -add @{"extensionattribute5"="Afwezig op dinsdag"}
+Set-ADUser –Identity a.hein -add @{"extensionattribute5"="Aanwezig maandag, dinsdag en donderdag"}
+Set-ADUser –Identity A.Kroezen-Barkel -add @{"extensionattribute5"="Audrie Kroezen-Barkel"}
+Set-ADUser –Identity B.Guzek -add @{"extensionattribute5"="Op vrijdag afwezig"}
+Set-ADUser –Identity b.oudeheuvel -add @{"extensionattribute5"="Werkdagen di /wo / do"}
+Set-ADUser –Identity B.Aydogmus -add @{"extensionattribute5"="Afwezig op vrijdag"}
+Set-ADUser –Identity b.lokhorst -add @{"extensionattribute5"="Afwezig op woensdag in de oneven weken"}
+
+
+## Fax numeber instellen
+
+Set-ADUser –Identity j.nijhof -fax "1234567"
+
+
+#SET AD user SammaccountNAme
+Get-ADUser –Filter * -Properties SamAccountName | ForEach-Object { Set-ADUser $_ -UserPrincipalName ($_.SamAccountName + "@zzzzzzz.onmicrosoft.com" )}
+
+
+
+$gebruikers = Get-AdUser -Filter "*" -searchbase "OU=Timing Accounts,OU=Accounts,DC=intern,DC=local" -Properties otherMobile, otherPager, description
+
+
+foreach ($gebruiker in $gebruikers) {
+$Ext3 = $gebruiker.description
+if ($Ext3){
+$stringdesc = Out-String -InputObject $Ext3
+Set-ADUser $gebruiker.samaccountname -replace @{'title'=$stringdesc}
+}
+}
+
+
+-ErrorAction Inquir
